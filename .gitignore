@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Ortam değişkenleri (GİZLİ!)
+.env
+!.env.example
+
+# Veri dosyaları (büyük)
+data/faiss_index/
+data/reports/
+*.db
+
+# Loglar
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Docker
+docker/data/
+
+# Pytest
+.pytest_cache/
+.coverage
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Next.js
+frontend_next/node_modules/
+frontend_next/.next/
+frontend_next/out/
+.next/
+node_modules/
+dist/
+build/
+
