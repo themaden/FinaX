@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #090b16;
+    --foreground: #f8fafc;
+    --card: #12172d;
+    --card-foreground: #f8fafc;
+    --primary: #00f2fe;
+    --primary-foreground: #090b16;
+    --secondary: #4facfe;
+    --secondary-foreground: #f8fafc;
+    --accent: #00d4aa;
+    --accent-foreground: #090b16;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090b16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4facfe;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(22, 28, 51, 0.45);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card {
+  background: rgba(22, 28, 51, 0.45);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79, 172, 254, 0.35);
+  box-shadow: 0 15px 45px rgba(79, 172, 254, 0.15);
+}
+
+/* Pulsating Animation for Backend Dot */
+.pulse-green {
+  box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7);
+  animation: pulse-green-anim 2s infinite;
+}
+
+@keyframes pulse-green-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 212, 170, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0);
+  }
+}
+
+.pulse-red {
+  box-shadow: 0 0 0 0 rgba(255, 75, 75, 0.7);
+  animation: pulse-red-anim 2s infinite;
+}
+
+@keyframes pulse-red-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 75, 75, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 75, 75, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 75, 75, 0);
+  }
+}
