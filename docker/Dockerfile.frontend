@@ -1,20 +1,30 @@
-# FinanX — Frontend Dockerfile
-FROM python:3.11-slim
+# FinanX — Next.js Frontend Dockerfile
+FROM node:20-slim AS builder
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir streamlit plotly requests python-dotenv
+# Bağımlılıkları yükle
+COPY frontend_next/package*.json ./
+RUN npm install
 
-COPY frontend/ ./frontend/
+# Kaynak kodları kopyala ve build et
+COPY frontend_next/ .
+RUN npm run build
 
-EXPOSE 8501
+# Çalışma aşaması (Production runner)
+FROM node:20-slim AS runner
 
-HEALTHCHECK --interval=30s --timeout=10s \
-    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+WORKDIR /app
 
-CMD ["streamlit", "run", "frontend/app.py", \
-     "--server.port", "8501", \
-     "--server.address", "0.0.0.0", \
-     "--server.headless", "true", \
-     "--theme.base", "dark"]
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]

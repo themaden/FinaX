@@ -1,1 +1,0 @@
-"""FinanX Frontend Components"""

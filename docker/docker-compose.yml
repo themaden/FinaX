@@ -24,16 +24,16 @@ services:
     networks:
       - finanx-network
 
-  # Streamlit Frontend
+  # Next.js Frontend
   frontend:
     build:
       context: ..
       dockerfile: docker/Dockerfile.frontend
     container_name: finanx-frontend
     ports:
-      - "8501:8501"
+      - "3000:3000"
     environment:
-      - BACKEND_URL=http://backend:8000
+      - NEXT_PUBLIC_API_URL=http://backend:8000
     depends_on:
       backend:
         condition: service_healthy
