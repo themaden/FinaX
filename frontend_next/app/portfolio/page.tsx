@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Briefcase, AlertTriangle, Plus, Trash2, PieChart, Info, RefreshCw } from "lucide-react";
+import { Briefcase, AlertTriangle, Plus, Trash2, PieChart, Info, RefreshCw, TrendingUp } from "lucide-react";
 import {
   ResponsiveContainer,
   PieChart as RechartsPieChart,
